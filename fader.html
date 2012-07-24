@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>Fader</title>		
+		<script src="http://code.jquery.com/jquery-latest.js"></script>	
+		
+		<style type="text/css" >
+			.room-images img
+			{
+				position: absolute;			
+			}
+			
+			.room-images
+			{
+				height: 213px;
+				width: 320px;			
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="room1" class="room-images">
+			 <img class="lights-off" src="images/dark.jpg" alt="no-image" width="320px" height="213px"/>
+		    <img class="lights-on" src="images/light.jpg" alt="no-image" width="320px" height="213px"/>	    
+		</div>
+		<button class="room-image-toggler" data-toggle="room1">Lights Off</button>
+		
+	   <script>
+		  $('button.room-image-toggler').toggle(function() {     
+	     $(this).addClass( 'room-image-toggled').removeClass('room-image-toggler').html('Lights On');
+		  var div = $('#' + $(this).data('toggle'));
+	     div.find('.lights-on').fadeOut("slow");	 
+	     },
+	     
+	     function () {
+		  $(this).addClass( 'room-image-toggler').removeClass('room-image-toggled').html('Lights Off');	  
+		  var div = $('#' + $(this).data('toggle'));
+	     div.find('.lights-on').fadeIn("slow");
+		  });
+	   </script>	
+	</body>
+</html>
